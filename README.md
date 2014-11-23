@@ -1,4 +1,5 @@
 coursera-ds3-project
 ====================
 
-Project of the Coursera DataScience 3 course (Getting and Cleaning Data)
+This is the README file for Raju varghese's project submission for the Coursera DataScience 3 course (Getting and Cleaning Data).
+
