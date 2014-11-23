@@ -64,6 +64,10 @@ newNames <- gsub ("(\\.)", "", newNames)
 newNames <- gsub ("mean", "Mean", newNames)
 newNames <- gsub ("std", "Std", newNames)
 newNames <- gsub ("gravity", "Gravity", newNames)
+newNames <- gsub ("^t", "time", newNames)
+newNames <- gsub ("^f", "freq", newNames)
+newNames <- gsub ("BodyBody", "Body", newNames)
+newNames <- gsub ("tBody", "TimeBody", newNames)
 
 names (data) <- newNames
 

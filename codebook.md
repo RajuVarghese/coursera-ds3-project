@@ -1,59 +1,110 @@
-Feature Selection 
-=================
+# Codebook for output produced by run_analysis.R #
 
-The features selected for this database come from the accelerometer and gyroscope 3-axial raw signals tAcc-XYZ and tGyro-XYZ. These time domain signals (prefix 't' to denote time) were captured at a constant rate of 50 Hz. Then they were filtered using a median filter and a 3rd order low pass Butterworth filter with a corner frequency of 20 Hz to remove noise. Similarly, the acceleration signal was then separated into body and gravity acceleration signals (tBodyAcc-XYZ and tGravityAcc-XYZ) using another low pass Butterworth filter with a corner frequency of 0.3 Hz. 
+## Setup
+The original data for this analysis comes from sensors in a smartphone. The transducers are accelerometers and gyroscopes in a Samsung Galaxy S as described in the article on [Human Activity Recognition Using Smartphones](http://archive.ics.uci.edu/ml/datasets/Human+Activity+Recognition+Using+Smartphones). That input data is processed further in run_analysis.R producing average values grouped by subjects and activities.
 
-Subsequently, the body linear acceleration and angular velocity were derived in time to obtain Jerk signals (tBodyAccJerk-XYZ and tBodyGyroJerk-XYZ). Also the magnitude of these three-dimensional signals were calculated using the Euclidean norm (tBodyAccMag, tGravityAccMag, tBodyAccJerkMag, tBodyGyroMag, tBodyGyroJerkMag). 
+## Input Data
+All input data are in the directory `data`. The variables are described in `data/features_info.txt` (please refer to that file for information on each of the signals). The variables are data measured and calculated from the smartphones worn by 30 subjects performing 6 different activities (eg, sitting, walking, laying, etc).
 
-Finally a Fast Fourier Transform (FFT) was applied to some of these signals producing fBodyAcc-XYZ, fBodyAccJerk-XYZ, fBodyGyro-XYZ, fBodyAccJerkMag, fBodyGyroMag, fBodyGyroJerkMag. (Note the 'f' to indicate frequency domain signals). 
+## Processed Data
+The processed data are average of the some of the input data grouped by subject and activity. The input data that were selected are those that have the words 'mean' or 'std' in them as specified by the course project specification. It does not explicitly say whether that refers to functions and/or measured values and hence both of them have been included. The values in the table are, therefore, the average of the indicated signal grouped by subject and activity.
 
-These signals were used to estimate variables of the feature vector for each pattern:  
-'-XYZ' is used to denote 3-axial signals in the X, Y and Z directions.
+The input signals have been given more descriptive names than in the input data. For this the following conversions were made:
 
-tBodyAcc-XYZ
-tGravityAcc-XYZ
-tBodyAccJerk-XYZ
-tBodyGyro-XYZ
-tBodyGyroJerk-XYZ
-tBodyAccMag
-tGravityAccMag
-tBodyAccJerkMag
-tBodyGyroMag
-tBodyGyroJerkMag
-fBodyAcc-XYZ
-fBodyAccJerk-XYZ
-fBodyGyro-XYZ
-fBodyAccMag
-fBodyAccJerkMag
-fBodyGyroMag
-fBodyGyroJerkMag
+1. R's builtin make.names function was used to clean out the punctuation characters such as '(', ')', '-', etc.
+2. The words 'mean', 'std'(standard deviation) and 'gravity' were camel-cased.
+3. Initial 't and 'f' were converted to 'time' and 'freq', respectively.
+4. Miscellaneous cleanup: Occurrences of 'BodyBody' were changed to 'Body' and embedded 'tBody' to 'TimeBody'
 
-The set of variables that were estimated from these signals are: 
+  Variables:
 
-mean(): Mean value
-std(): Standard deviation
-mad(): Median absolute deviation 
-max(): Largest value in array
-min(): Smallest value in array
-sma(): Signal magnitude area
-energy(): Energy measure. Sum of the squares divided by the number of values. 
-iqr(): Interquartile range 
-entropy(): Signal entropy
-arCoeff(): Autorregresion coefficients with Burg order equal to 4
-correlation(): correlation coefficient between two signals
-maxInds(): index of the frequency component with largest magnitude
-meanFreq(): Weighted average of the frequency components to obtain a mean frequency
-skewness(): skewness of the frequency domain signal 
-kurtosis(): kurtosis of the frequency domain signal 
-bandsEnergy(): Energy of a frequency interval within the 64 bins of the FFT of each window.
-angle(): Angle between to vectors.
+    Subject                             
+    Activity                            
+    timeBodyAccMeanX                    
+    timeBodyAccMeanY                    
+    timeBodyAccMeanZ                    
+    timeBodyAccStdX                     
+    timeBodyAccStdY                     
+    timeBodyAccStdZ                     
+    timeGravityAccMeanX                 
+    timeGravityAccMeanY                 
+    timeGravityAccMeanZ                 
+    timeGravityAccStdX                  
+    timeGravityAccStdY                  
+    timeGravityAccStdZ                  
+    timeBodyAccJerkMeanX                
+    timeBodyAccJerkMeanY                
+    timeBodyAccJerkMeanZ                
+    timeBodyAccJerkStdX                 
+    timeBodyAccJerkStdY                 
+    timeBodyAccJerkStdZ                 
+    timeBodyGyroMeanX                   
+    timeBodyGyroMeanY                   
+    timeBodyGyroMeanZ                   
+    timeBodyGyroStdX                    
+    timeBodyGyroStdY                    
+    timeBodyGyroStdZ                    
+    timeBodyGyroJerkMeanX               
+    timeBodyGyroJerkMeanY               
+    timeBodyGyroJerkMeanZ               
+    timeBodyGyroJerkStdX                
+    timeBodyGyroJerkStdY                
+    timeBodyGyroJerkStdZ                
+    timeBodyAccMagMean                  
+    timeBodyAccMagStd                   
+    timeGravityAccMagMean               
+    timeGravityAccMagStd                
+    timeBodyAccJerkMagMean              
+    timeBodyAccJerkMagStd               
+    timeBodyGyroMagMean                 
+    timeBodyGyroMagStd                  
+    timeBodyGyroJerkMagMean             
+    timeBodyGyroJerkMagStd              
+    freqBodyAccMeanX                    
+    freqBodyAccMeanY                    
+    freqBodyAccMeanZ                    
+    freqBodyAccStdX                     
+    freqBodyAccStdY                     
+    freqBodyAccStdZ                     
+    freqBodyAccMeanFreqX                
+    freqBodyAccMeanFreqY                
+    freqBodyAccMeanFreqZ                
+    freqBodyAccJerkMeanX                
+    freqBodyAccJerkMeanY                
+    freqBodyAccJerkMeanZ                
+    freqBodyAccJerkStdX                 
+    freqBodyAccJerkStdY                 
+    freqBodyAccJerkStdZ                 
+    freqBodyAccJerkMeanFreqX            
+    freqBodyAccJerkMeanFreqY            
+    freqBodyAccJerkMeanFreqZ            
+    freqBodyGyroMeanX                   
+    freqBodyGyroMeanY                   
+    freqBodyGyroMeanZ                   
+    freqBodyGyroStdX                    
+    freqBodyGyroStdY                    
+    freqBodyGyroStdZ                    
+    freqBodyGyroMeanFreqX               
+    freqBodyGyroMeanFreqY               
+    freqBodyGyroMeanFreqZ               
+    freqBodyAccMagMean                  
+    freqBodyAccMagStd                   
+    freqBodyAccMagMeanFreq              
+    freqBodyAccJerkMagMean              
+    freqBodyAccJerkMagStd               
+    freqBodyAccJerkMagMeanFreq          
+    freqBodyGyroMagMean                 
+    freqBodyGyroMagStd                  
+    freqBodyGyroMagMeanFreq             
+    freqBodyGyroJerkMagMean             
+    freqBodyGyroJerkMagStd              
+    freqBodyGyroJerkMagMeanFreq         
+    angleTimeBodyAccMeanGravity         
+    angleTimeBodyAccJerkMeanGravityMean 
+    angleTimeBodyGyroMeanGravityMean    
+    angleTimeBodyGyroJerkMeanGravityMean
+    angleXGravityMean                   
+    angleYGravityMean                   
+    angleZGravityMean
 
-Additional vectors obtained by averaging the signals in a signal window sample. These are used on the angle() variable:
-
-gravityMean
-tBodyAccMean
-tBodyAccJerkMean
-tBodyGyroMean
-tBodyGyroJerkMean
-
-The complete list of variables of each feature vector is available in 'features.txt'
+Please refer to the original information on the signals in `data/features_info.txt` for more information on each of the data points.
