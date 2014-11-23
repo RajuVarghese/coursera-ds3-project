@@ -16,7 +16,7 @@ The input signals have been given more descriptive names than in the input data.
 3. Initial 't and 'f' were converted to 'time' and 'freq', respectively.
 4. Miscellaneous cleanup: Occurrences of 'BodyBody' were changed to 'Body' and embedded 'tBody' to 'TimeBody'
 
-  Variables:
+### Variables
 
     Subject                             
     Activity                            
